@@ -1,25 +1,19 @@
 import type { DailyForecast, DailyForecastUnits } from "../types/daily-forecast"
 import { Drawer, DrawerTrigger, DrawerContent, DrawerHeader, DrawerTitle } from "./ui/drawer"
 
+const defaultText = "text-foreground dark:text-muted-foreground"
+
 function visibilityStyle(v: number) {
-  return v < 2
-    ? "text-red-600 dark:text-red-400"
-    : v < 5
-      ? "text-amber-600 dark:text-amber-400"
-      : "text-green-600 dark:text-green-400"
+  return v < 2 ? "text-red-600 dark:text-red-400" : v < 5 ? "text-amber-600 dark:text-amber-400" : defaultText
 }
 function windStyle(w: number) {
-  return w >= 20
-    ? "text-red-600 dark:text-red-400"
-    : w >= 15
-      ? "text-amber-600 dark:text-amber-400"
-      : "text-green-600 dark:text-green-400"
+  return w >= 20 ? "text-red-600 dark:text-red-400" : w >= 15 ? "text-amber-600 dark:text-amber-400" : defaultText
 }
 function precipStyle(p: number) {
-  return p > 1 ? "text-red-600 dark:text-red-400" : "text-green-600 dark:text-green-400"
+  return p > 1 ? "text-red-600 dark:text-red-400" : defaultText
 }
 function waveStyle(w: number) {
-  return w > 4 ? "text-red-600 dark:text-red-400" : "text-green-600 dark:text-green-400"
+  return w > 4 ? "text-red-600 dark:text-red-400" : defaultText
 }
 function rowBg(entry: DailyForecast) {
   if (entry.wind_speed_10m >= 20 || entry.wave_height > 4 || entry.precipitation > 1 || entry.visibility < 2)
