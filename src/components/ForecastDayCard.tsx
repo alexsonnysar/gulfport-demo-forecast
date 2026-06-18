@@ -29,20 +29,22 @@ const cardStyles: Record<ActionStatus, string> = {
   "NO-GO": "bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-800 ring-red-400/50",
 }
 
+const defaultText = "text-foreground dark:text-muted-foreground"
+
 function visibilityStyle(v: number | null) {
   if (v == null) return "text-muted-foreground"
-  return v < 2 ? "text-red-600 dark:text-red-400" : v < 5 ? "text-amber-600 dark:text-amber-400" : "text-green-600 dark:text-green-400"
+  return v < 2 ? "text-red-600 dark:text-red-400" : v < 5 ? "text-amber-600 dark:text-amber-400" : defaultText
 }
 function windStyle(w: number | null) {
   if (w == null) return "text-muted-foreground"
-  return w >= 20 ? "text-red-600 dark:text-red-400" : w >= 15 ? "text-amber-600 dark:text-amber-400" : "text-green-600 dark:text-green-400"
+  return w >= 20 ? "text-red-600 dark:text-red-400" : w >= 15 ? "text-amber-600 dark:text-amber-400" : defaultText
 }
 function precipStyle(p: number) {
-  return p > 1 ? "text-red-600 dark:text-red-400" : "text-green-600 dark:text-green-400"
+  return p > 1 ? "text-red-600 dark:text-red-400" : defaultText
 }
 function waveStyle(w: number | null) {
   if (w == null) return "text-muted-foreground"
-  return w > 4 ? "text-red-600 dark:text-red-400" : "text-green-600 dark:text-green-400"
+  return w > 4 ? "text-red-600 dark:text-red-400" : defaultText
 }
 
 interface Props {
