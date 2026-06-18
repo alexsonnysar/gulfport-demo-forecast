@@ -44,7 +44,7 @@ export function ForecastDayDrawer({ day, entries, units, trigger }: Props) {
                 <th className="pb-2 pl-3 text-left font-medium">Time</th>
                 <th className="px-3 pb-2 text-center font-medium">Visibility ({units.visibility})</th>
                 <th className="px-3 pb-2 text-center font-medium">Wind ({units.wind_speed_10m})</th>
-                <th className="px-3 pb-2 text-center font-medium">Precip ({units.precipitation})</th>
+                <th className="px-3 pb-2 text-center font-medium">Precip ({units.precipitation.substring(0, 2)})</th>
                 <th className="px-3 pb-2 text-center font-medium">Waves ({units.wave_height})</th>
               </tr>
             </thead>

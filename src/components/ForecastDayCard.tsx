@@ -11,7 +11,13 @@ function getActionStatus(
   totalPrecipitation: number,
   maxWaveHeight: number | null
 ): ActionStatus {
-  if ((maxWindSpeed != null && maxWindSpeed >= 20) || (maxWaveHeight != null && maxWaveHeight > 4) || totalPrecipitation > 1 || (minVisibility != null && minVisibility < 2)) return "NO-GO"
+  if (
+    (maxWindSpeed != null && maxWindSpeed >= 20) ||
+    (maxWaveHeight != null && maxWaveHeight > 4) ||
+    totalPrecipitation > 1 ||
+    (minVisibility != null && minVisibility < 2)
+  )
+    return "NO-GO"
   if ((maxWindSpeed != null && maxWindSpeed >= 15) || (minVisibility != null && minVisibility < 5)) return "CAUTION"
   return "GO"
 }
@@ -99,7 +105,7 @@ export function ForecastDayCard({ entries }: Props) {
           <div className="flex items-center justify-between py-1.5">
             <span className="text-foreground dark:text-muted-foreground">Precipitation</span>
             <span className={cn("font-medium", precipStyle(totalPrecipitation))}>
-              {totalPrecipitation.toFixed(2)} {units.precipitation}
+              {totalPrecipitation.toFixed(2)} {units.precipitation.substring(0, 2)}
             </span>
           </div>
           <div className="flex items-center justify-between py-1.5">
