@@ -1,5 +1,10 @@
 # Gulfport Demo Forecast
 
+<img width="2226" height="997" alt="image" src="https://github.com/user-attachments/assets/b3e3afa1-57cd-4b63-abe6-5dc158f75ef6" />
+<img width="2226" height="997" alt="image" src="https://github.com/user-attachments/assets/80007951-16cb-4546-b6e2-86ffe642067f" />
+
+
+
 A 10-day marine weather forecast dashboard for Gulfport, MS, built to support on-site demo scheduling. It combines hourly weather and marine data into a GO / NO-GO decision for each day, with drill-down hourly detail.
 
 ## Setup
