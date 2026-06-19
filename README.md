@@ -1,21 +1,50 @@
-# React + TypeScript + Vite + shadcn/ui
+# Gulfport Demo Forecast
 
-This is a template for a new Vite project with React, TypeScript, and shadcn/ui.
+A 10-day marine weather forecast dashboard for Gulfport, MS, built to support on-site demo scheduling. It combines hourly weather and marine data into a GO / NO-GO decision for each day, with drill-down hourly detail.
 
-## Adding components
+## Setup
 
-To add components to your app, run the following command:
+**Prerequisites:** Node.js 18+ and [pnpm](https://pnpm.io/installation)
 
 ```bash
-npx shadcn@latest add button
+pnpm install
+pnpm dev
 ```
 
-This will place the ui components in the `src/components` directory.
+Open [http://localhost:5173](http://localhost:5173).
 
-## Using components
-
-To use the components in your app, import them as follows:
-
-```tsx
-import { Button } from "@/components/ui/button"
+```bash
+pnpm build      # production build
+pnpm typecheck  # type-check without emitting
+pnpm lint       # ESLint
+pnpm format     # Prettier
 ```
+
+## Tech Stack
+
+| Layer         | Library                                                                        |
+| ------------- | ------------------------------------------------------------------------------ |
+| Framework     | [React 19](https://react.dev) + [TypeScript 6](https://www.typescriptlang.org) |
+| Build         | [Vite 8](https://vitejs.dev)                                                   |
+| Styling       | [Tailwind CSS v4](https://tailwindcss.com)                                     |
+| UI Components | [shadcn/ui](https://ui.shadcn.com) + [Base UI](https://base-ui.com)            |
+| Data Fetching | [TanStack Query v5](https://tanstack.com/query)                                |
+| Data Source   | [Open-Meteo](https://open-meteo.com)                                           |
+
+## Data Sources
+
+Two Open-Meteo endpoints are fetched in parallel and merged hourly:
+
+- **Weather API** — visibility (converted to nautical miles), wind speed (knots), precipitation (inches)
+- **Marine API** — wave height (feet)
+
+## GO / NO-GO Thresholds
+
+| Condition     | NO-GO                 |
+| ------------- | --------------------- |
+| Wind speed    | > 20 kn               |
+| Visibility    | < 2 nm                |
+| Wave height   | > 4 ft                |
+| Precipitation | > 0.3 in (worst hour) |
+
+Each day card shows worst-case conditions across all hours. Click any card to see the full hourly breakdown.

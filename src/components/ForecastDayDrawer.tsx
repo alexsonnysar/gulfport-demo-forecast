@@ -4,21 +4,20 @@ import { Drawer, DrawerTrigger, DrawerContent, DrawerHeader, DrawerTitle } from 
 const defaultText = "text-foreground dark:text-muted-foreground"
 
 function visibilityStyle(v: number) {
-  return v < 2 ? "text-red-600 dark:text-red-400" : v < 5 ? "text-amber-600 dark:text-amber-400" : defaultText
+  return v < 2 ? "text-red-600 dark:text-red-400" : defaultText
 }
 function windStyle(w: number) {
-  return w >= 20 ? "text-red-600 dark:text-red-400" : w >= 15 ? "text-amber-600 dark:text-amber-400" : defaultText
+  return w > 20 ? "text-red-600 dark:text-red-400" : defaultText
 }
 function precipStyle(p: number) {
-  return p > 1 ? "text-red-600 dark:text-red-400" : defaultText
+  return p > 0.3 ? "text-red-600 dark:text-red-400" : defaultText
 }
 function waveStyle(w: number) {
   return w > 4 ? "text-red-600 dark:text-red-400" : defaultText
 }
 function rowBg(entry: DailyForecast) {
-  if (entry.wind_speed_10m >= 20 || entry.wave_height > 4 || entry.precipitation > 1 || entry.visibility < 2)
+  if (entry.wind_speed_10m > 20 || entry.wave_height > 4 || entry.precipitation > 0.3 || entry.visibility < 2)
     return "bg-red-100 dark:bg-red-950/70"
-  if (entry.wind_speed_10m >= 15 || entry.visibility < 5) return "bg-amber-100 dark:bg-amber-950/70"
   return "bg-green-100 dark:bg-green-950/70"
 }
 
